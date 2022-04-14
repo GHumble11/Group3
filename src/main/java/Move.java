@@ -4,7 +4,7 @@ public enum Move {
     Paper (1, 0),         // move option for throwing paper
     Scissors (2, 1);      // move option for throwing scissors
 
-    private final int thisMove
+    private final int thisMove;
     private final int losingMove;
 
 
