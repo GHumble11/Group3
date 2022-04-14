@@ -1,12 +1,18 @@
 /* List of potential moves the player can take */
 public enum Move {
-    Rock (),          // move option for throwing rock
-    Paper (1),         // move option for throwing paper
-    Scissors (2);      // move option for throwing scissors
+    Rock (0, 2),          // move option for throwing rock
+    Paper (1, 0),         // move option for throwing paper
+    Scissors (2, 1);      // move option for throwing scissors
 
-    private final Move losingMove;
+    private final int thisMove
+    private final int losingMove;
 
-    Move(Move losingMove) {this.losingMove = losingMove;}
 
-    public Move getLosingMove() {return losingMove;}
+    Move(int thisMove, int losingMove) {
+        this.thisMove = thisMove;
+        this.losingMove = losingMove;
+    }
+
+    public int getThisMove() {return this.thisMove;}
+    public int getLosingMove() {return this.losingMove;}
 }
