@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -6,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.PipedOutputStream;
 
 public class Main extends Application {
@@ -16,7 +19,6 @@ public class Main extends Application {
      */
 
     private Stage startingStage = null;
-    private Stage inputGameStage = null;
     private Stage viewRecordsStage = null;
 
     private Button inputGameInfo = new Button("Input game");   // input new game information
@@ -38,10 +40,11 @@ public class Main extends Application {
 
 
 // VIEW GAME RECORD DETAILS
-    public void viewRecordDetails(Stage viewRecordDetailsStage) {
-
-        viewRecordDetailsStage.setTitle("Specific game records");
+    public Scene gameDetails() {
+        //Stage viewRecordDetailsStage = new Stage();
+        //viewRecordDetailsStage.setTitle("Specific game records");
         BorderPane stageLayout = new BorderPane();
+        Scene gameDetailsScene = new Scene(stageLayout);
         Label headerLabel = new Label("GAME DETAILS");
         Label roundNumber = new Label("Round 1");
         Label roundNumber2 = new Label("Round 2");
@@ -62,12 +65,14 @@ public class Main extends Application {
 
         stageLayout.setTop(header);
         stageLayout.setCenter(listOfGames);
+        return gameDetailsScene;
     }
 //VIEW RECORDS OF GAMES
-    public void viewRecords(Stage viewRecordsStage) {
+    public Scene gameHistory() {
 
-        viewRecordsStage.setTitle("List of all played games");
+        //viewRecordsStage.setTitle("List of all played games");
         BorderPane stageLayout = new BorderPane();
+        Scene gameHistoryScene = new Scene(stageLayout);
         Label headerLabel = new Label("GAME RECORDS");
         VBox listOfGames = new VBox(10);
         HBox header = new HBox();
@@ -86,14 +91,14 @@ public class Main extends Application {
 
         stageLayout.setTop(header);
         stageLayout.setCenter(listOfGames);
-
+        return gameHistoryScene;
 
     }
 //INPUT GAME INFO
-    public void inputGame(Stage inputGameStage) {
-
-        inputGameStage.setTitle("Input new game information");
+    public Scene inputGame() {
         BorderPane stageLayout = new BorderPane();
+        Scene inputGameScene = new Scene(stageLayout);
+        //inputGameStage.setTitle("Input new game information");
         Label p1Label = new Label("PLAYER 1");
         Label p2Label = new Label("PLAYER 2");
         VBox playerOneButtonPanel = new VBox(10);
@@ -107,11 +112,27 @@ public class Main extends Application {
 
         stageLayout.setLeft(playerOneButtonPanel);
         stageLayout.setRight(playerTwoButtonPanel);
-
+        return inputGameScene;
     }
 // MENU
     @Override
     public void start(Stage startingStage) {
+
+        Scene inputScene = inputGame();
+        Scene gameHistoryScene = gameHistory();
+        Scene gameDetailsScene = gameDetails();
+
+        inputGameInfo.setOnAction(e -> {
+            startingStage.setScene(inputScene);
+        });
+
+        viewGame.setOnAction(e -> {
+            startingStage.setScene(gameHistoryScene);
+        });
+
+        fakeName1.setOnAction(e -> {
+            startingStage.setScene(gameDetailsScene);
+        });
 
         startingStage.setTitle("Rock Paper Scissors Tracker");
         BorderPane stageLayout = new BorderPane();
