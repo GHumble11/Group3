@@ -24,12 +24,6 @@ public class Main extends Application {
     private Button inputGameInfo = new Button("Input game");   // input new game information
     private Button viewGame = new Button("View past games");   // view past game information
 
-    private Button p1rockButton = new Button("Rock");
-    private Button p1paperButton = new Button("Paper");
-    private Button p1scissorsButton = new Button("Scissors");
-    private Button p2rockButton = new Button("Rock");
-    private Button p2paperButton = new Button("Paper");
-    private Button p2scissorsButton = new Button("Scissors");
 
     private Label fakeData1 = new Label("___");
     private Label fakeData2 = new Label("___");
@@ -94,31 +88,12 @@ public class Main extends Application {
         return gameHistoryScene;
 
     }
-//INPUT GAME INFO
-    public Scene inputGame() {
-        BorderPane stageLayout = new BorderPane();
-        Scene inputGameScene = new Scene(stageLayout);
-        //inputGameStage.setTitle("Input new game information");
-        Label p1Label = new Label("PLAYER 1");
-        Label p2Label = new Label("PLAYER 2");
-        VBox playerOneButtonPanel = new VBox(10);
-        VBox playerTwoButtonPanel = new VBox(10);
 
-        playerOneButtonPanel.getChildren().addAll(p1Label, p1rockButton, p1paperButton, p1scissorsButton);
-        playerTwoButtonPanel.getChildren().addAll(p2Label, p2rockButton, p2paperButton, p2scissorsButton);
-
-        playerOneButtonPanel.setAlignment(Pos.CENTER);
-        playerTwoButtonPanel.setAlignment(Pos.CENTER);
-
-        stageLayout.setLeft(playerOneButtonPanel);
-        stageLayout.setRight(playerTwoButtonPanel);
-        return inputGameScene;
-    }
 // MENU
     @Override
     public void start(Stage startingStage) {
 
-        Scene inputScene = inputGame();
+        InputScene inputScene = new InputScene();
         Scene gameHistoryScene = gameHistory();
         Scene gameDetailsScene = gameDetails();
 
@@ -145,10 +120,14 @@ public class Main extends Application {
         stageLayout.setCenter(options);
 
 
+
         Scene scene = new Scene(stageLayout, 200, 300);
         startingStage.setScene(scene);
         startingStage.show();
 
+
+
+        inputScene.setBackButtonTargets(startingStage, scene);
 
     }
 
