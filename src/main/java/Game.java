@@ -1,7 +1,7 @@
 public class Game
 {
     /**a flowchart table for all the rock paper scissors
-     * matchups,returns game result based on the two moves
+     * match-ups,returns game result based on the two moves
      * 0 for an error or insufficient data
      * 1 for player 1 win
      * 2 for player 2 win
