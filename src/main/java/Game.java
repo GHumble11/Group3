@@ -13,60 +13,28 @@ public class Game
     public int play(Move Move1, Move Move2)
     {
         int gameResult;
-        switch (Move1)
+        if(Move1.equals(Move.Rock))
         {
-            case Rock:
-                switch (Move2)
-                {
-                    case Rock:
-                        gameResult = 3;
-                        break;
-                    case Paper:
-                        gameResult = 2;
-                        break;
-                    case Scissors:
-                        gameResult = 1;
-                        break;
-                    default:
-                        gameResult = 0;
-                        break;
-                }
-            case Paper:
-                switch (Move2)
-                {
-                    case Rock:
-                        gameResult = 1;
-                        break;
-                    case Paper:
-                        gameResult = 3;
-                        break;
-                    case Scissors:
-                        gameResult = 2;
-                        break;
-                    default:
-                        gameResult = 0;
-                        break;
-                }
-            case Scissors:
-                switch (Move2)
-                {
-                    case Rock:
-                        gameResult = 2;
-                        break;
-                    case Paper:
-                        gameResult = 1;
-                        break;
-                    case Scissors:
-                        gameResult = 3;
-                        break;
-                    default:
-                        gameResult = 0;
-                        break;
-                }
-            default:
-                gameResult = 0;
-                break;
+            if(Move2.equals(Move.Rock)) { gameResult = 3; }
+            else if(Move2.equals(Move.Paper)) { gameResult = 2; }
+            else if(Move2.equals(Move.Scissors)) { gameResult = 1; }
+            else { gameResult = 4; }
         }
+        else if(Move1.equals(Move.Paper))
+        {
+            if(Move2.equals(Move.Rock)) { gameResult = 1; }
+            else if(Move2.equals(Move.Paper)) { gameResult = 3; }
+            else if(Move2.equals(Move.Scissors)) { gameResult = 2; }
+            else { gameResult = 5; }
+        }
+        else if(Move1.equals(Move.Scissors))
+        {
+            if(Move2.equals(Move.Rock)) { gameResult = 2; }
+            else if(Move2.equals(Move.Paper)) { gameResult = 1; }
+            else if(Move2.equals(Move.Scissors)) { gameResult = 3; }
+            else { gameResult = 6; }
+        }
+        else { gameResult = 7; }
         return gameResult;
     }
 
