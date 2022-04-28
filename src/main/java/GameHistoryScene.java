@@ -48,8 +48,6 @@ public class GameHistoryScene extends Scene{
     }
 
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
-        back.setOnAction(e -> {
-            mainStage.setScene(targetScene);
-        });
+        back.setOnAction(e -> mainStage.setScene(targetScene));
     }
 }

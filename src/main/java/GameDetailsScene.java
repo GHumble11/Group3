@@ -46,8 +46,7 @@ public class GameDetailsScene extends Scene {
     }
 
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
-        back.setOnAction(e -> {
-            mainStage.setScene(targetScene);
-        });
+        back.setOnAction(e -> mainStage.setScene(targetScene));
+            System.out.println("working3");
     }
 }
