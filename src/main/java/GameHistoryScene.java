@@ -42,17 +42,14 @@ public class GameHistoryScene extends Scene{
         stageLayout.setCenter(listOfGames);
 
         GameDetailsScene gameDetailsScene = new GameDetailsScene();
-
-
-
         fakeName1.setOnAction(e -> {
             startingStage.setScene(gameDetailsScene);
         });
-
-
     }
 
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
-        back.setOnAction(e -> mainStage.setScene(targetScene));
+        back.setOnAction(e -> {
+            mainStage.setScene(targetScene);
+        });
     }
 }

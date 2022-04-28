@@ -47,22 +47,14 @@ public class Main extends Application {
 
         stageLayout.setCenter(options);
 
-
-
         Scene scene = new Scene(stageLayout, 200, 300); //Creation of MAIN MENU Scene
         startingStage.setScene(scene);
         startingStage.show();
 
-
-
         inputScene.setBackButtonTargets(startingStage, scene);
         gameHistoryScene.setBackButtonTargets(startingStage, scene);
         gameDetailsScene.setBackButtonTargets(startingStage, scene);
-
-
     }
-
-
 
 
     /** Launches the application
@@ -72,5 +64,4 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }

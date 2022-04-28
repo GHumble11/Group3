@@ -48,9 +48,9 @@ public class InputScene extends Scene {
         rock.setToggleGroup(move1);
         paper.setToggleGroup(move1);
         scissors.setToggleGroup(move1);
-        rock.setToggleGroup(move2);
-        paper.setToggleGroup(move2);
-        scissors.setToggleGroup(move2);
+        rock2.setToggleGroup(move2);
+        paper2.setToggleGroup(move2);
+        scissors2.setToggleGroup(move2);
 
         move1Layout.setPadding(new Insets(15,15,15,15));
         move2Layout.setPadding(new Insets(15,15,15,15));
@@ -61,7 +61,6 @@ public class InputScene extends Scene {
         move1Layout.setAlignment(Pos.CENTER_LEFT);
         move2Layout.setAlignment(Pos.CENTER_LEFT);
         submitLayout.setAlignment(Pos.CENTER);
-
 
         stageLayout.setLeft(move1Layout);
         stageLayout.setRight(move2Layout);
@@ -77,16 +76,18 @@ public class InputScene extends Scene {
         resultsArray [2][0] = "2W";
         resultsArray [2][1] = "1W";
         resultsArray [2][2] = "D";
+
+        submit.setOnAction(e -> {
+            getMoves();
+        });
     }
+
 
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
         back.setOnAction(e -> mainStage.setScene(targetScene));
     }
 
-    public String submitButton() {
-        submit.setOnAction(e -> getMoves());
-        return getMoves();
-    }
+
 
     public String getMoves() {
         if (move1.getSelectedToggle() == rock) {
@@ -97,10 +98,10 @@ public class InputScene extends Scene {
         }
         else playerOneThrow = 2;
 
-        if (move2.getSelectedToggle() == rock) {
+        if (move2.getSelectedToggle() == rock2) {
             playerTwoThrow = 0;
         }
-        else if (move2.getSelectedToggle() == paper) {
+        else if (move2.getSelectedToggle() == paper2) {
             playerTwoThrow = 1;
         }
         else playerTwoThrow = 2;
