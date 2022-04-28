@@ -9,10 +9,7 @@ import javafx.stage.Stage;
 
 public class GameHistoryScene extends Scene{
 
-    private Label fakeData1 = new Label("___");
-    private Label fakeData2 = new Label("___");
-    private Label fakeData3 = new Label("___");
-    private Label fakeData4 = new Label("___");
+    private Label results = new Label("_____");
     private Button fakeName1 = new Button("GAME 1");
     private Button fakeName2 = new Button("GAME 2");
 
@@ -30,8 +27,8 @@ public class GameHistoryScene extends Scene{
         HBox backBox = new HBox();
 
         header.getChildren().add(headerLabel);
-        game.getChildren().addAll(fakeName1,fakeData1,fakeData2);
-        game2.getChildren().addAll(fakeName2, fakeData3,fakeData4);
+        game.getChildren().addAll(fakeName1, results);
+       // game2.getChildren().addAll(fakeName2, results);
         listOfGames.getChildren().addAll(game, game2, backBox);
         backBox.getChildren().add(back);
 
@@ -45,6 +42,8 @@ public class GameHistoryScene extends Scene{
         stageLayout.setCenter(listOfGames);
 
         GameDetailsScene gameDetailsScene = new GameDetailsScene();
+
+
 
         fakeName1.setOnAction(e -> {
             startingStage.setScene(gameDetailsScene);

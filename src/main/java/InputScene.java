@@ -29,6 +29,13 @@ public class InputScene extends Scene {
     ToggleGroup move1 = new ToggleGroup();
     ToggleGroup move2 = new ToggleGroup();
 
+    Integer playerOneThrow = -1;
+    Integer playerTwoThrow = -1;
+
+    String[][] resultsArray = new String[3][3];
+
+    String gameResult = "";
+
     public InputScene() {
         super(new BorderPane());
         BorderPane stageLayout = (BorderPane)this.getRoot();
@@ -51,27 +58,63 @@ public class InputScene extends Scene {
         move2Layout.getChildren().addAll(p2Label, rock2, paper2, scissors2);
         submitLayout.getChildren().addAll(back, submit);
 
-        move1Layout.setAlignment(Pos.CENTER);
-        move2Layout.setAlignment(Pos.CENTER);
+        move1Layout.setAlignment(Pos.CENTER_LEFT);
+        move2Layout.setAlignment(Pos.CENTER_LEFT);
         submitLayout.setAlignment(Pos.CENTER);
 
 
         stageLayout.setLeft(move1Layout);
         stageLayout.setRight(move2Layout);
         stageLayout.setBottom(submitLayout);
+
+        //GAME RESULTS ARRAY
+        resultsArray [0][0] = "D"; //Draw
+        resultsArray [0][1] = "2W"; //PLAYER 2 WINS
+        resultsArray [0][2] = "1W"; //PLAYER 1 WINS
+        resultsArray [1][0] = "1W";
+        resultsArray [1][1] = "D";
+        resultsArray [1][2] = "2W";
+        resultsArray [2][0] = "2W";
+        resultsArray [2][1] = "1W";
+        resultsArray [2][2] = "D";
     }
 
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
         back.setOnAction(e -> mainStage.setScene(targetScene));
     }
 
-    public AtomicReference<String> setMoves() {
-        AtomicReference<String> gameResult = new AtomicReference<>("");
-        submit.setOnAction(e -> {
-            if (move1.getSelectedToggle() == rock && move2.getSelectedToggle() == scissors) {
-                gameResult.set("W");
-            }
-        });
+    public String submitButton() {
+        submit.setOnAction(e -> getMoves());
+        return getMoves();
+    }
+
+    public String getMoves() {
+        if (move1.getSelectedToggle() == rock) {
+            playerOneThrow = 0;
+        }
+        else if (move1.getSelectedToggle() == paper) {
+            playerOneThrow = 1;
+        }
+        else playerOneThrow = 2;
+
+        if (move2.getSelectedToggle() == rock) {
+            playerTwoThrow = 0;
+        }
+        else if (move2.getSelectedToggle() == paper) {
+            playerTwoThrow = 1;
+        }
+        else playerTwoThrow = 2;
+
+        String result = resultsArray[playerOneThrow][playerTwoThrow];
+
+        if (result == "1W") {
+            gameResult = "Player One Wins";
+        }
+        else if (result == "2W") {
+            gameResult = "Player Two Wins";
+        }
+        else gameResult = "No Winner";
+
         return gameResult;
     }
 }

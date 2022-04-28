@@ -44,9 +44,14 @@ public class GameDetailsScene extends Scene {
         stageLayout.setTop(header);
         stageLayout.setCenter(listOfGames);
 
+
+
     }
+
+
 
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
         back.setOnAction(e -> mainStage.setScene(targetScene));
     }
+
 }

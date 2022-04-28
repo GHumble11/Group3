@@ -59,6 +59,7 @@ public class Main extends Application {
         gameHistoryScene.setBackButtonTargets(startingStage, scene);
         gameDetailsScene.setBackButtonTargets(startingStage, scene);
 
+
     }
 
 
