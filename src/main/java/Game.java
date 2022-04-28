@@ -2,13 +2,13 @@ public class Game
 {
     /**a flowchart table for all the rock paper scissors
      * match-ups,returns game result based on the two moves
-     * 0 for an error or insufficient data
      * 1 for player 1 win
      * 2 for player 2 win
      * 3 for tie
+     * 4-7 for errors on each step
      * @param Move1
      * @param Move2
-     * @return
+     * @return gameResult
      */
     public int play(Move Move1, Move Move2)
     {
