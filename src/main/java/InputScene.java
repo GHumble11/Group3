@@ -32,7 +32,7 @@ public class InputScene extends Scene {
     Integer playerOneThrow = -1;
     Integer playerTwoThrow = -1;
 
-    String[][] resultsArray = new String[3][3];
+    //String[][] resultsArray = new String[3][3];
 
     String gameResult = "";
 
@@ -67,6 +67,7 @@ public class InputScene extends Scene {
         stageLayout.setBottom(submitLayout);
 
         //GAME RESULTS ARRAY
+        /*
         resultsArray [0][0] = "D"; //Draw
         resultsArray [0][1] = "2W"; //PLAYER 2 WINS
         resultsArray [0][2] = "1W"; //PLAYER 1 WINS
@@ -77,6 +78,8 @@ public class InputScene extends Scene {
         resultsArray [2][1] = "1W";
         resultsArray [2][2] = "D";
 
+
+         */
         submit.setOnAction(e -> {
             getMoves();
         });
@@ -89,7 +92,7 @@ public class InputScene extends Scene {
 
 
 
-    public String getMoves() {
+    public Game getMoves() {
         if (move1.getSelectedToggle() == rock) {
             playerOneThrow = 0;
         }
@@ -106,16 +109,20 @@ public class InputScene extends Scene {
         }
         else playerTwoThrow = 2;
 
-        String result = resultsArray[playerOneThrow][playerTwoThrow];
+        Game result = new Game(playerOneThrow, playerTwoThrow);
 
-        if (result == "1W") {
+        /*
+        if (result.equals("1W")) {
             gameResult = "Player One Wins";
         }
-        else if (result == "2W") {
+        else if (result.equals("2W")) {
             gameResult = "Player Two Wins";
         }
         else gameResult = "No Winner";
 
-        return gameResult;
+
+         */
+        System.out.println(result.getGame());
+        return result;
     }
 }
