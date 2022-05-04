@@ -30,7 +30,6 @@ public class InputScene extends Scene {
     Game result;
 
 
-
     public InputScene() {
         super(new BorderPane());
         BorderPane stageLayout = (BorderPane)this.getRoot();
@@ -93,7 +92,7 @@ public class InputScene extends Scene {
         else playerTwoThrow = 2;
 
         result = new Game(playerOneThrow, playerTwoThrow);
-        Main.games.add(result);
+        Main.games.add(result.getGame());
         System.out.println(result.getGame());
         return result;
     }

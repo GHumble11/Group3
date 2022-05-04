@@ -12,6 +12,10 @@ import java.awt.*;
 import java.io.PipedOutputStream;
 import java.util.ArrayList;
 
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+import javafx.collections.FXCollections;
+
 public class Main extends Application {
 
     /** Set up a maven run profile in intellij or use maven from the command-line.
@@ -21,7 +25,8 @@ public class Main extends Application {
 
     private Button inputGameInfo = new Button("Input game");   // input new game information
     private Button viewGame = new Button("View past games");   // view past game information
-    public static ArrayList<Game> games = new ArrayList<>();
+    //public static ArrayList<Game> games = new ArrayList<>();
+    public static ObservableList<String> games = FXCollections.observableArrayList();
 
 // MAIN MENU
     @Override
