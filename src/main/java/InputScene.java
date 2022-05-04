@@ -7,8 +7,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.concurrent.atomic.AtomicReference;
-
 public class InputScene extends Scene {
 
 
@@ -29,10 +27,9 @@ public class InputScene extends Scene {
     Integer playerOneThrow = -1;
     Integer playerTwoThrow = -1;
 
-    //String[][] resultsArray = new String[3][3];
-
     Game result;
-    String gameResult = "";
+
+
 
     public InputScene() {
         super(new BorderPane());
@@ -64,20 +61,6 @@ public class InputScene extends Scene {
         stageLayout.setRight(move2Layout);
         stageLayout.setBottom(submitLayout);
 
-        //GAME RESULTS ARRAY
-        /*
-        resultsArray [0][0] = "D"; //Draw
-        resultsArray [0][1] = "2W"; //PLAYER 2 WINS
-        resultsArray [0][2] = "1W"; //PLAYER 1 WINS
-        resultsArray [1][0] = "1W";
-        resultsArray [1][1] = "D";
-        resultsArray [1][2] = "2W";
-        resultsArray [2][0] = "2W";
-        resultsArray [2][1] = "1W";
-        resultsArray [2][2] = "D";
-
-
-         */
         submit.setOnAction(e -> {
             getMoves();
             Alert resultPopup = new Alert(Alert.AlertType.INFORMATION, result.getGame());
@@ -110,18 +93,7 @@ public class InputScene extends Scene {
         else playerTwoThrow = 2;
 
         result = new Game(playerOneThrow, playerTwoThrow);
-
-        /*
-        if (result.equals("1W")) {
-            gameResult = "Player One Wins";
-        }
-        else if (result.equals("2W")) {
-            gameResult = "Player Two Wins";
-        }
-        else gameResult = "No Winner";
-
-
-         */
+        Main.games.add(result);
         System.out.println(result.getGame());
         return result;
     }

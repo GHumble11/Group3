@@ -21,7 +21,7 @@ public class Main extends Application {
 
     private Button inputGameInfo = new Button("Input game");   // input new game information
     private Button viewGame = new Button("View past games");   // view past game information
-    private static final ArrayList<Game> games = new ArrayList<Game>();
+    public static ArrayList<Game> games = new ArrayList<>();
 
 // MAIN MENU
     @Override

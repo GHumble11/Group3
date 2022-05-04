@@ -9,10 +9,6 @@ import javafx.stage.Stage;
 
 public class GameHistoryScene extends Scene{
 
-    private Label results = new Label("_____");
-    private Button fakeName1 = new Button("GAME 1");
-    private Button fakeName2 = new Button("GAME 2");
-
     private Button back = new Button("Back");
 
     public GameHistoryScene(Stage startingStage) {
@@ -27,8 +23,9 @@ public class GameHistoryScene extends Scene{
         HBox backBox = new HBox();
 
         header.getChildren().add(headerLabel);
-        game.getChildren().addAll(fakeName1, results);
-       // game2.getChildren().addAll(fakeName2, results);
+        String gameList = createGameHistory();
+        Label results = new Label(gameList);
+        game.getChildren().addAll(results);
         listOfGames.getChildren().addAll(game, game2, backBox);
         backBox.getChildren().add(back);
 
@@ -40,11 +37,20 @@ public class GameHistoryScene extends Scene{
 
         stageLayout.setTop(header);
         stageLayout.setCenter(listOfGames);
+    }
 
-        GameDetailsScene gameDetailsScene = new GameDetailsScene();
-        fakeName1.setOnAction(e -> {
-            startingStage.setScene(gameDetailsScene);
-        });
+    public String createGameHistory()
+    {
+        int i = 0;
+        StringBuilder output = new StringBuilder("Nothing");
+        for(Game game:Main.games)
+        {
+            System.out.println(game.getGame());
+            output.append(game.getGame());
+            output.append(i);
+            i++;
+        }
+        return output.toString();
     }
 
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
