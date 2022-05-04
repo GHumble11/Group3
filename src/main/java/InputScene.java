@@ -1,10 +1,7 @@
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -34,6 +31,7 @@ public class InputScene extends Scene {
 
     //String[][] resultsArray = new String[3][3];
 
+    Game result;
     String gameResult = "";
 
     public InputScene() {
@@ -82,6 +80,8 @@ public class InputScene extends Scene {
          */
         submit.setOnAction(e -> {
             getMoves();
+            Alert resultPopup = new Alert(Alert.AlertType.INFORMATION, result.getGame());
+            resultPopup.show();
         });
     }
 
@@ -109,7 +109,7 @@ public class InputScene extends Scene {
         }
         else playerTwoThrow = 2;
 
-        Game result = new Game(playerOneThrow, playerTwoThrow);
+        result = new Game(playerOneThrow, playerTwoThrow);
 
         /*
         if (result.equals("1W")) {
