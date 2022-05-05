@@ -25,8 +25,8 @@ public class Main extends Application {
 
     private Button inputGameInfo = new Button("Input game");   // input new game information
     private Button viewGame = new Button("View past games");   // view past game information
-    //public static ArrayList<Game> games = new ArrayList<>();
     public static ObservableList<String> games = FXCollections.observableArrayList();
+    public static ObservableList<Game> gameObjects = FXCollections.observableArrayList();
 
 // MAIN MENU
     @Override
@@ -68,7 +68,5 @@ public class Main extends Application {
      *
      * @param args
      */
-    public static void main(String[] args) {
-        launch();
-    }
+    public static void main(String[] args) {launch();}
 }

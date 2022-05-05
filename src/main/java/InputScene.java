@@ -14,21 +14,18 @@ public class InputScene extends Scene {
     private Button submit = new Button("Submit");
 
 
-    RadioButton rock = new RadioButton("Rock");
-    RadioButton paper = new RadioButton("Paper");
+    static RadioButton rock = new RadioButton("Rock");
+    static RadioButton paper = new RadioButton("Paper");
     RadioButton scissors = new RadioButton("Scissors");
-    RadioButton rock2 = new RadioButton("Rock");
-    RadioButton paper2 = new RadioButton("Paper");
+    static RadioButton rock2 = new RadioButton("Rock");
+    static RadioButton paper2 = new RadioButton("Paper");
     RadioButton scissors2 = new RadioButton("Scissors");
 
     ToggleGroup move1 = new ToggleGroup();
     ToggleGroup move2 = new ToggleGroup();
 
-    Integer playerOneThrow = -1;
-    Integer playerTwoThrow = -1;
-
     Game result;
-
+    int idCounter = 0;
 
     public InputScene() {
         super(new BorderPane());
@@ -75,25 +72,11 @@ public class InputScene extends Scene {
 
 
     public Game getMoves() {
-        if (move1.getSelectedToggle() == rock) {
-            playerOneThrow = 0;
-        }
-        else if (move1.getSelectedToggle() == paper) {
-            playerOneThrow = 1;
-        }
-        else playerOneThrow = 2;
-
-        if (move2.getSelectedToggle() == rock2) {
-            playerTwoThrow = 0;
-        }
-        else if (move2.getSelectedToggle() == paper2) {
-            playerTwoThrow = 1;
-        }
-        else playerTwoThrow = 2;
-
-        result = new Game(playerOneThrow, playerTwoThrow);
+        result = new Game(idCounter, move1.getSelectedToggle(), move2.getSelectedToggle());
+        idCounter++;
         Main.games.add(result.getGame());
-        System.out.println(result.getGame());
+        Main.gameObjects.add(result);
+        System.out.println(result.getGame() + result.getID() + result.getP1ThrowString() + result.getP2ThrowString());
         return result;
     }
 }

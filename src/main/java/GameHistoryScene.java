@@ -1,21 +1,26 @@
+import com.sun.javafx.scene.control.LabeledText;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
-import javafx.collections.FXCollections;
 
 public class GameHistoryScene extends Scene{
 
+    private ListView gamesList = new ListView(Main.games);
     private Button back = new Button("Back");
+    String output = "";
+    Alert resultPopup;
 
     public GameHistoryScene(Stage startingStage) {
 
@@ -27,9 +32,11 @@ public class GameHistoryScene extends Scene{
         HBox game = new HBox(5);
         HBox backBox = new HBox();
 
+
+
         header.getChildren().add(headerLabel);
-        game.getChildren().addAll(new ListView(Main.games));
-        listOfGames.getChildren().addAll(new ListView(Main.games), backBox);
+        game.getChildren().addAll(gamesList);
+        listOfGames.getChildren().addAll(gamesList, backBox);
         backBox.getChildren().add(back);
 
         header.setAlignment(Pos.CENTER);
@@ -39,22 +46,23 @@ public class GameHistoryScene extends Scene{
 
         stageLayout.setTop(header);
         stageLayout.setCenter(listOfGames);
-    }
 
-    /*
-    public String createGameHistory()
-    {
-        int i = 0;
-        for(Game game:Main.games)
-        {
-            System.out.println(game.getGame());
-            output.append(game.getGame());
-            output.append(i);
-            i++;
-        }
+        gamesList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                for (Game game : Main.gameObjects)
+                {
+                    if (gamesList.getSelectionModel().getSelectedIndex() == game.getID())
+                    {
+                        output = ("Game ID:" + game.getID() + " Player 1 threw " + game.getP1ThrowString() + " and player 2 threw " + game.getP2ThrowString());
+                        resultPopup = new Alert(Alert.AlertType.INFORMATION, output);
+                        System.out.println(mouseEvent.getTarget());
+                        resultPopup.show();
+                    }
+                }
+            }
+        });
     }
-     */
-
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
         back.setOnAction(e -> mainStage.setScene(targetScene));
     }
