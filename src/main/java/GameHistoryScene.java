@@ -15,8 +15,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.ListView;
 
-public class GameHistoryScene extends Scene{
-
+/**
+ * Our scene to view the record of past games in this session
+ * Click any value to see what each player threw that game and the Game ID
+ * Create game records by going back and selecting Input Game
+ */
+public class GameHistoryScene extends Scene
+{
     private ListView gamesList = new ListView(Main.games);
     private Button back = new Button("Back");
     String output = "";
@@ -24,6 +29,7 @@ public class GameHistoryScene extends Scene{
 
     public GameHistoryScene(Stage startingStage) {
 
+        //sets up the window layout and elements
         super(new BorderPane());
         BorderPane stageLayout = (BorderPane)this.getRoot();
         Label headerLabel = new Label("GAME RECORDS");
@@ -31,8 +37,6 @@ public class GameHistoryScene extends Scene{
         HBox header = new HBox();
         HBox game = new HBox(5);
         HBox backBox = new HBox();
-
-
 
         header.getChildren().add(headerLabel);
         game.getChildren().addAll(gamesList);
@@ -47,6 +51,9 @@ public class GameHistoryScene extends Scene{
         stageLayout.setTop(header);
         stageLayout.setCenter(listOfGames);
 
+        /**
+         * the code to view the game details of a game from the listview on click
+         */
         gamesList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -63,6 +70,12 @@ public class GameHistoryScene extends Scene{
             }
         });
     }
+
+    /**
+     * takes you back to the main menu
+     * @param mainStage the current scene, game history page
+     * @param targetScene the target scene, in this case the main menu
+     */
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
         back.setOnAction(e -> mainStage.setScene(targetScene));
     }

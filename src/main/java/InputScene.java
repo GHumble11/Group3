@@ -7,9 +7,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Our input scene, under Input Game from the main menu
+ * create game records by selecting both moves and hitting submit
+ * view them by going back to the main menu and selecting View Past Games
+ */
 public class InputScene extends Scene {
-
-
+    //sets up the window layout, elements, and values
     private Button back = new Button("Back");
     private Button submit = new Button("Submit");
 
@@ -57,6 +61,8 @@ public class InputScene extends Scene {
         stageLayout.setRight(move2Layout);
         stageLayout.setBottom(submitLayout);
 
+        //records a game object
+        //makes a popup of the game result upon clicking submit
         submit.setOnAction(e -> {
             getMoves();
             Alert resultPopup = new Alert(Alert.AlertType.INFORMATION, result.getGame());
@@ -64,13 +70,20 @@ public class InputScene extends Scene {
         });
     }
 
-
+    /**
+     * takes you back to the main menu
+     * @param mainStage the current scene, game history page
+     * @param targetScene the target scene, in this case the main menu
+     */
     public void setBackButtonTargets(Stage mainStage, Scene targetScene) {
         back.setOnAction(e -> mainStage.setScene(targetScene));
     }
 
-
-
+    /**
+     * the code for inputting and recording a new game object when submitted with the submit button
+     * takes input from both radio buttons
+     * @return a game object with a result based on the moves given
+     */
     public Game getMoves() {
         result = new Game(idCounter, move1.getSelectedToggle(), move2.getSelectedToggle());
         idCounter++;

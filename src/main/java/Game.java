@@ -5,12 +5,6 @@ import javafx.scene.control.Toggle;
  */
 public class Game
 {
-    /** our local fields to create a Game Object
-     * @p1ThrowString the string of player one's throw for making messages and alerts later
-     * @p2ThrowString the string of player two's throw for making messages and alerts later
-     * @gameOutcome the string stating who won the game for making messages, alerts, and our
-     * observable array list games used for the listview.
-     */
     private int gameID = 0;
     private String p1ThrowString = "";
     private String p2ThrowString = "";
